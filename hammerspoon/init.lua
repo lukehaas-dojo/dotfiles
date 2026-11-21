@@ -46,13 +46,29 @@ local bindings = {
   Right = window.rightCycle, -- right half, then right third
   Up    = window.nextScreen,
   Down  = window.previousScreen,
-  F     = window.maximize,
+  Return = window.maximize,
   ["="] = window.grow,
   ["-"] = window.shrink,
   A     = window.moveLeft,
   D     = window.moveRight,
+  -- C     = window.center
+  -- F     = window.toggleFullScreenMode
 }
 
 for key, handler in pairs(bindings) do
   hs.hotkey.bind(HYPER, key, handler)
 end
+
+
+-- hs.hotkey.bind({"ctrl", "alt", "cmd"}, "F", function()
+--     local app = hs.application.frontmostApplication()
+--     if app then
+--         -- Searches the app's menu bar for the exact menu item name and clicks it
+--         local success = app:selectMenuItem({"View", "Toggle Full Screen Mode"})
+        
+--         -- Fallback: search anywhere in the menu bar if it isn't under "View"
+--         if not success then
+--             app:selectMenuItem("Toggle Full Screen Mode")
+--         end
+--     end
+-- end)

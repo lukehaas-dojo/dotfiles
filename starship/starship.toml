@@ -1,6 +1,8 @@
 # General
 command_timeout = 2000
+# Theme: "catppuccin_mocha" (dark) or "e_ink" (light). Match wezterm.lua.
 palette = "catppuccin_mocha"
+# palette = "e_ink"
 
 format = """
 $directory\
@@ -35,10 +37,8 @@ style = "bold blue"
 disabled = true
 
 # One git status per prompt: ✖ when dirty, ● when clean. The colour comes
-# from the command, since a module's style can't depend on its output. The
-# RGB values are the palette's red and green.
 [custom.git_state]
-command = 'if [ -n "$(git status --porcelain 2>/dev/null)" ]; then printf "\033[1;38;2;243;139;168m✖\033[0m"; else printf "\033[1;38;2;166;227;161m●\033[0m"; fi'
+command = 'if [ -n "$(git status --porcelain 2>/dev/null)" ]; then printf "\033[1;31m✖\033[0m"; else printf "\033[1;32m●\033[0m"; fi'
 when = true
 require_repo = true
 shell = ["sh"]
@@ -116,3 +116,31 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[palettes.e_ink]
+rosewater = "#d75f00"
+flamingo = "#d70000"
+pink = "#b000b0"
+mauve = "#b000b0"
+red = "#d70000"
+maroon = "#d70000"
+peach = "#d75f00"
+yellow = "#b07000"
+green = "#008f00"
+teal = "#008ca0"
+sky = "#008ca0"
+sapphire = "#0050e0"
+blue = "#0050e0"
+lavender = "#0050e0"
+text = "#000000"
+subtext1 = "#333333"
+subtext0 = "#333333"
+overlay2 = "#333333"
+overlay1 = "#555555"
+overlay0 = "#777777"
+surface2 = "#999999"
+surface1 = "#b8b8b8"
+surface0 = "#d8d8d8"
+base = "#ffffff"
+mantle = "#ffffff"
+crust = "#ffffff"
