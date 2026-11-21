@@ -2,17 +2,41 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-custom.background = "#11111b"
+local theme = "dark" -- Options: "dark" or "light"
+
+local mocha = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+mocha.background = "#11111b"
 
 config.color_schemes = {
-  ["Catppuccin Espresso"] = custom,
+  ["Catppuccin Espresso"] = mocha,
+}
+
+config.color_schemes["E-Ink"] = {
+  foreground = "#000000",
+  background = "#ffffff",
+  cursor_bg = "#000000",
+  cursor_fg = "#ffffff",
+  cursor_border = "#000000",
+  selection_fg = "#000000",
+  selection_bg = "#b8b8b8",
+  ansi = { "#e8e8e8", "#d70000", "#008f00", "#b07000", "#0050e0", "#b000b0", "#008ca0", "#000000" },
+  brights = { "#666666", "#ff2020", "#00a800", "#d75f00", "#2070ff", "#d000d0", "#00a8c0", "#333333" },
 }
 
 config.adjust_window_size_when_changing_font_size = false
-config.color_scheme = "Catppuccin Espresso"
 config.enable_tab_bar = false
 config.font_size = 15.0
+
+if theme == "light" then
+  config.color_scheme = "E-Ink"
+  config.bold_brightens_ansi_colors = "No"
+  config.cursor_blink_rate = 0
+  config.animation_fps = 1
+  config.font_size = 17.0
+else
+  config.color_scheme = "Catppuccin Espresso"
+  config.font_size = 15.0
+end
 
 config.window_background_opacity = 1.0
 
@@ -20,7 +44,7 @@ config.window_decorations = "RESIZE"
 
 config.max_fps = 120
 -- config.font = wezterm.font("DejaVuSansM Nerd Font Mono")
-config.font = wezterm.font("JetBrainsMono NFP", { weight = "DemiBold" })
+config.font = wezterm.font("JetBrains Mono", { weight = "DemiBold" })
 -- config.window_frame = {
 --   font = wezterm.font("Hack Nerd Font", { weight = "DemiBold" }),
 -- }
